@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    --page-height: calc(100dvh - 6em);
+}
+
+.height {
+    height: var(--page-height);
+    border: 1px solid blue;
+}
+
+.navigation-container {
+    width: 100%;
+    height: 6.0rem;
+}
+
+.nav-inner {
+    position: fixed;
+    width: 100%;
+}
+
+.top-bar {
+    height: 4em;    
+    border: 1px solid blue;
+}
+
+.nav-bar {
+    height: 2em;
+    border: 1px solid springgreen;
+}
+
+.hourly-page-container {
+    border: 1px solid red;
+    height: var(--page-height);
+}
