@@ -4,17 +4,30 @@
 }
 
 body {
+    font-family: 'Poppins', sans-serif ;
     --page-height: calc(100dvh - 6em);
+    --top-bar-color: rgb(51, 51, 51);
+    --nav-bar-color: rgb(65, 65, 65);
+    --container-color: rgba(207, 207, 207, 0.41);
 }
 
-.height {
+.page {
+    display: flex;
     height: var(--page-height);
-    border: 1px solid blue;
+    flex-direction: column;
+    border-bottom:1px solid red ;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navigation-container {
     width: 100%;
     height: 6.0rem;
+    color: white;
 }
 
 .nav-inner {
@@ -23,16 +36,115 @@ body {
 }
 
 .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
     height: 4em;    
-    border: 1px solid blue;
+    background-color: var(--top-bar-color);
 }
 
 .nav-bar {
+    display: flex;
     height: 2em;
-    border: 1px solid springgreen;
+    justify-content: center;
+    background-color: var(--nav-bar-color);
 }
 
+.nav-bar > ul {
+    width: 50%;
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    align-items: center;
+ }
+
 .hourly-page-container {
-    border: 1px solid red;
-    height: var(--page-height);
+    align-items: center ;
+}
+
+.main-display-container {
+    width: 100%;
+    height: 50%;
+    background-color: rgb(115, 115, 115);
+}
+
+.information-container {
+    margin-top: 1dvh;
+    width: 90%;
+    height: 50%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 6dvw;
+    row-gap: 2dvh;
+    padding: 1rem;
+}
+
+.information-container > * {
+    background-color: var(--container-color);
+    border-radius: 1rem;
+    
+}
+
+.daily-page-container {
+    align-items: center;
+}
+
+.next-four-info-container {
+    height: 20%;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3dvh;
+    margin-top: 2dvh;
+}
+
+.next-four-info-container > * {
+    background-color: var(--container-color);
+    border-radius: 1rem;
+}
+
+.wind-speed-chart-container,
+.rain-chance-container {
+    height: 40%;
+    width: 100%;
+}
+
+.speed-chart,
+.rain-meters {
+    border-radius: 1rem;
+    background-color: var(--container-color);
+    width: 95%;
+    height: 95%;
+}
+
+.past-weather-container {
+    align-items: center;
+}
+
+.past-weather-container > * {
+    height: 50%;
+    width: 100%;
+}
+
+.temp-chart,
+.speed-meter {
+    border-radius: 1rem;
+    width: 95%;
+    height: 95%;
+    background-color: var(--container-color);
+}
+
+.todays-air-quality-container,
+.air-pollutants-container {
+    height: 50%;
+    width: auto;
+}
+
+.air-quality,
+.air-pollutants {
+    border-radius: 1rem;
+    width: 95%;
+    height: 95%;
+    background-color: var(--container-color);
 }

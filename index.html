@@ -5,56 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stratosphere</title>
     <link rel="stylesheet" href="styles/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    </style>
 </head>
 <body>
     <!-- top navigation bar container -->
     <div class="navigation-container">
         <header class="nav-inner">
-            <section class="top-bar"></section>
-            <nav class="nav-bar"></nav>
+            <!-- top bar containing input field, logo and date time -->
+            <section class="top-bar">
+                <div class="logo">Logo</div>
+
+                <div class="input-field-button">
+                    <input type="text" placeholder="Type city name or postcode">
+                    <button>Submit</button>
+                </div>
+
+                <div class="date-time">
+                    <p>Date and Time</p>
+                </div>
+            </section>
+            <!-- navigation bar -->
+            <nav class="nav-bar">
+                <ul>
+                    <li>Hourly</li>
+                    <li>Daily</li>
+                    <li>Past Weather</li>
+                    <li>Air Quality</li>
+                </ul>
+            </nav>
         </header>
     </div>
 
 
     <!-- Hourly page -->
-    <div class="hourly-page-container height">
+    <div class="hourly-page-container page">
         <!-- main-weather display -->
         <section class="main-display-container"></section>
 
-        <!-- sub information  -->
-        <section class="information-container"></section>
+        <!-- weather components information  -->
+        <section class="information-container">
+            <!-- components -->
+            <div class="wind-speed"></div>
+            <div class="humidity"></div>
+            <div class="uv"></div>
+            <div class="pressure"></div>
+            <div class="rain-chance"></div>
+            <div class="dust"></div>
+        </section>
     </div>
 
 
     <!-- Daily page -->
-    <div class="daily-page-container height">
+    <div class="daily-page-container page">
         <!-- next 7 days information -->
-        <section class="next-seven-info-container"></section>
+        <section class="next-four-info-container">
+            <div class="day-1"></div>
+            <div class="day-2"></div>
+            <div class="day-3"></div>
+            <div class="day-4"></div>
+        </section>
 
         <!-- wind speed chart -->
-        <section class="wind-speed-chart-container"></section>
+        <section class="wind-speed-chart-container flex-center">
+            <div class="speed-chart">Speed of wind for the next 4 days</div>
+        </section>
 
         <!-- chance of rain meters -->
-        <section class="rain-chance-container"></section>
+        <section class="rain-chance-container flex-center">
+            <div class="rain-meters">Chance of rain for the next 04 days</div>
+        </section>
     </div>
 
     <!-- Past weather page -->
-    <div class="past-weather-page-container height">
+    <div class="past-weather-container page">
         <!-- last 7 days temperature chart -->
-        <section class="last-seven-info-chart-container"></section>
+        <section class="last-seven-temp-info-container flex-center">
+            <div class="temp-chart">Temperature for the last 7 days</div>
+        </section>
 
         <!-- wind speed meters -->
-        <section class="wind-speed-meter-container"></section>
+        <section class="wind-speed-meter-container flex-center">
+            <div class="speed-meter">Speed of wind for the last 7 days</div>
+        </section>
     </div>
 
 
     <!-- Air quality page -->
-    <div class="air-quality-page-container height">
+    <div class="air-quality-page-container page">
         <!-- todays air quality -->
-        <section class="todays-air-quality-container"></section>
+        <section class="todays-air-quality-container flex-center">
+            <div class="air-quality">Todays air quality</div>
+        </section>
 
         <!-- air pollutants -->
-        <section class="air-pollutants-container"></section>
+        <section class="air-pollutants-container flex-center">
+            <div class="air-pollutants">Air pollutants</div>
+        </section>
     </div>
 
 </body>
