@@ -1,21 +1,29 @@
 * {
+    scroll-behavior: smooth;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Poppins', sans-serif ;
+    /* variables */
     --page-height: calc(100dvh - 6em);
     --top-bar-color: rgb(51, 51, 51);
     --nav-bar-color: rgb(65, 65, 65);
-    --container-color: rgba(207, 207, 207, 0.41);
+    --container-color: rgba(207, 207, 207, 0.392);
+    --box-shadow: 0px 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.263);
+    --button-color: rgb(70, 129, 244);
+    --component-heading-color: rgb(157, 155, 155);
+    --meter-stroke:  rgb(38, 255, 0);
 }
 
+/* utility classes */
 .page {
     display: flex;
     height: var(--page-height);
     flex-direction: column;
-    border-bottom:1px solid red ;
+    border-bottom:2px solid rgb(0, 0, 0) ;
 }
 
 .flex-center {
@@ -24,6 +32,12 @@ body {
     justify-content: center;
 }
 
+.absolute-hidden {
+    position: absolute;
+    visibility: hidden;
+}
+
+/* search bar and navigation bar */
 .navigation-container {
     width: 100%;
     height: 6.0rem;
@@ -39,9 +53,54 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    justify-content: space-between;
     width: 100%;
     height: 4em;    
     background-color: var(--top-bar-color);
+}
+
+.logo {
+    margin-left: 1rem;
+}
+
+.input-field {
+    text-align: center;
+    font-size: large;
+    width: 35rem;
+    height: 2.5rem;
+    border-radius: 0.25rem;
+    border: none;
+}
+
+.input-field:focus {
+    outline: none;
+}
+
+::placeholder {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.submit-btn {
+    background-color: var(--button-color) ;
+    font-size: large;
+    margin-left: 0.5rem;
+    height: 2.4rem;
+    width: 2.5rem;
+    border-radius: 0.25rem;
+    border: none;
+}
+
+.submit-btn > img {
+    object-fit: fill;
+    width: 40%;
+    height: 40%;
+    margin-top: 2px;
+}
+
+.date-time {
+    margin-right: 1rem;
+    flex-direction: column;
 }
 
 .nav-bar {
@@ -59,6 +118,16 @@ body {
     align-items: center;
  }
 
+ .nav-bar > ul > li > a {
+    color: white;
+    text-decoration: none;
+ }
+
+ .nav-bar > ul > li > a:hover {
+    color: rgb(72, 255, 127);
+ }
+
+ /* hourly page */
 .hourly-page-container {
     align-items: center ;
 }
@@ -66,26 +135,159 @@ body {
 .main-display-container {
     width: 100%;
     height: 50%;
-    background-color: rgb(115, 115, 115);
+    background-image: url("../assets/daniela-paola-alchapar-hNcEcKxjHlQ-unsplash.jpg");
+    background-color: rgba(39, 39, 39, 0.681);
+    background-size: cover;
+    background-blend-mode: multiply;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-display {
+    width: 50%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-display > img {
+    width: 6rem;
+    height: 6rem;
+}
+
+.weather-display > div {
+    width: 100%;
+    color: white;    
+}
+
+.main-temp {
+    font-size: 4rem;
+    font-weight: bolder;
+}
+
+.main-condition {
+    font-size: 1.5rem;
+}
+
+.main-location {
+    font-size: 1.125rem;
+    font-weight: 200;
 }
 
 .information-container {
-    margin-top: 1dvh;
+    margin: 1rem;
     width: 90%;
     height: 50%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 6dvw;
-    row-gap: 2dvh;
-    padding: 1rem;
+    column-gap: 6dvh;
+    row-gap: 1rem;
 }
 
 .information-container > * {
+    height: 20dvh;
     background-color: var(--container-color);
-    border-radius: 1rem;
+    border-radius: 1rem;  
+    box-shadow: var(--box-shadow);
+}
+
+.information-container > div > p {
+    text-align: center;
+    margin-top: 0.5rem;
+    color: var(--component-heading-color);
+}
+
+.weather-icon-display {
+    display: grid;
+    height: 75%;
+    grid-template-columns: 20% 80%;
+}
+
+.icon {
+    height: 100%;
+}
+
+.icon > img {
+    height: 3rem;
+    width: 3rem;
+}
+
+.meter-container-inner {
+    height: 100%;
+    width: 15dvh;
+    position: relative;
+    margin-left: 10dvh;
+    box-sizing: border-box;
+    z-index: -1;
+}
+
+.meter-outer {
+    height: 15dvh;
+    width: 15dvh;
+    border-radius: 50%;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.29),
+    -6px -6px 10px -1px rgba(238, 237, 237, 0.7)
+}
+
+.meter-inner {
+    height: 12.5dvh;
+    width: 12.5dvh;
+    border-radius: 50%;
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.748)
+}
+
+.meter-svg-container {
+    position: absolute;
+    top: 0; 
+    left: 0;   
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+}
+
+.wind-meter {
+    stroke:  var(--meter-stroke);
+    stroke-width: 1.4dvh;
+    fill: none;
+    stroke-dasharray: 297;
+    stroke-dashoffset: 297;
+    animation: 2s meter-animation linear forwards;
+
+}
+
+@keyframes meter-animation {
+    100%{
+        stroke-dashoffset: 50;
+    }
     
 }
 
+.meter {
+    border: 1px solid greenyellow;
+}
+
+.numeric-meter {
+    font-size: 2.25rem;
+    margin-top: 7%;
+}
+
+#pressure-meter {
+    margin-left: 20%;
+}
+
+#uv-meter {
+    margin-left: 35%;
+}
+
+#dust-meter {
+    margin-left: 32%;
+}
+
+/* daily page */
 .daily-page-container {
     align-items: center;
 }
@@ -102,6 +304,7 @@ body {
 .next-four-info-container > * {
     background-color: var(--container-color);
     border-radius: 1rem;
+    box-shadow: var(--box-shadow);
 }
 
 .wind-speed-chart-container,
@@ -115,16 +318,14 @@ body {
     border-radius: 1rem;
     background-color: var(--container-color);
     width: 95%;
-    height: 95%;
+    height: 90%;
+    box-shadow: var(--box-shadow);
 }
 
-.past-weather-container {
-    align-items: center;
-}
-
+/* past weather page */
 .past-weather-container > * {
     height: 50%;
-    width: 100%;
+    width: auto;
 }
 
 .temp-chart,
@@ -133,10 +334,11 @@ body {
     width: 95%;
     height: 95%;
     background-color: var(--container-color);
+    box-shadow: var(--box-shadow);
 }
 
-.todays-air-quality-container,
-.air-pollutants-container {
+/* air quality page */
+.air-quality-page-container > * {
     height: 50%;
     width: auto;
 }
@@ -147,4 +349,24 @@ body {
     width: 95%;
     height: 95%;
     background-color: var(--container-color);
+    box-shadow: var(--box-shadow);
 }
+
+/* pointers */
+#hourly {
+    top: -6em;
+}
+
+ #daily {
+    top: var(--page-height);
+ }
+
+ #past {
+    top: calc(2*var(--page-height));
+ }
+
+ #air-quality {
+    top: calc(3*var(--page-height));
+ }
+
+

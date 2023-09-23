@@ -15,24 +15,27 @@
         <header class="nav-inner">
             <!-- top bar containing input field, logo and date time -->
             <section class="top-bar">
-                <div class="logo">Logo</div>
+                <div class="logo">Stratosphere</div>
 
-                <div class="input-field-button">
-                    <input type="text" placeholder="Type city name or postcode">
-                    <button>Submit</button>
+                <div class="input-field-search-button">
+                    <input type="text" placeholder="Type city name or postcode" class="input-field">
+                    <button class="submit-btn">
+                        <img src="assets/magnifying-glass-svgrepo-com (1).svg" alt="search">
+                    </button>
                 </div>
 
-                <div class="date-time">
-                    <p>Date and Time</p>
+                <div class="date-time flex-center">
+                    <p>1st Jan 2023</p>
+                    <p>12.00 AM</p>
                 </div>
             </section>
             <!-- navigation bar -->
             <nav class="nav-bar">
                 <ul>
-                    <li>Hourly</li>
-                    <li>Daily</li>
-                    <li>Past Weather</li>
-                    <li>Air Quality</li>
+                    <li><a href="#hourly">Hourly</a></li>
+                    <li><a href="#daily">Daily</a></li>
+                    <li><a href="#past">Past Weather</a></li>
+                    <li><a href="#air-quality">Air Quality</a></li>
                 </ul>
             </nav>
         </header>
@@ -42,17 +45,107 @@
     <!-- Hourly page -->
     <div class="hourly-page-container page">
         <!-- main-weather display -->
-        <section class="main-display-container"></section>
+        <section class="main-display-container">
+            <div class="weather-display">
+                <img src="assets/icons8-rain-cloud-96.png" alt="cloud">
+                <div class="main-temp flex-center">30º C</div>
+                <div class="main-condition flex-center">Rainy Storm Clouds</div>
+                <div class="main-location flex-center">New York, USA</div>
+            </div>
+        </section>
 
         <!-- weather components information  -->
         <section class="information-container">
             <!-- components -->
-            <div class="wind-speed"></div>
-            <div class="humidity"></div>
-            <div class="uv"></div>
-            <div class="pressure"></div>
-            <div class="rain-chance"></div>
-            <div class="dust"></div>
+            <div class="wind-speed">
+                <p>Wind Speed</p>
+                <div class="weather-icon-display">
+                    <div class="icon flex-center">
+                        <img src="assets/icons8-wind-100.png" alt="">
+                    </div>
+                    <div class="wind-speed-meter-container-outer">
+                        <div class="meter-container-inner flex-center">
+                            <div class="meter-outer flex-center">
+                                <div class="meter-inner flex-center">
+                                    <span id="wind reading">90 km/h</span>
+                                </div>
+                            </div>
+                            <svg class="meter-svg-container" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                <circle class="wind-meter" cx="7.5dvh" cy="7.5dvh" r="6.8dvh" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="humidity">
+                <p>Humidity</p>
+                <div class="weather-icon-display">
+                    <span class="icon flex-center">
+                        <img src="assets/icons8-humidity-100.png" alt="">
+                    </span>
+                    <div class="wind-speed-meter-container-outer">
+                        <div class="meter-container-inner flex-center">
+                            <div class="meter-outer flex-center">
+                                <div class="meter-inner flex-center">
+                                    <span id="humidity-reading">90%</span>
+                                </div>
+                            </div>
+                            <svg class="meter-svg-container" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                <circle class="wind-meter" cx="7.5dvh" cy="7.5dvh" r="6.8dvh" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="uv">
+                <p>UV</p>
+                <div class="weather-icon-display">
+                    <span class="icon flex-center">
+                        <img src="assets/icons8-uv-64.png" alt="">
+                    </span>
+                    <span class="numeric-meter" id="uv-meter">5</span>
+                </div>
+            </div>
+            <div class="pressure">
+                <p>Pressure</p>
+                <div class="weather-icon-display">
+                    <span class="icon flex-center">
+                        <img src="assets/icons8-pressure-100.png" alt="">
+                    </span>
+                    <span class="numeric-meter" id="pressure-meter">720 pa</span>
+                </div>
+            </div>
+            <div class="rain-chance">
+                <p>Chance of rain</p>
+                <div class="weather-icon-display">
+                    <span class="icon flex-center">
+                        <img src="assets/icons8-rain-100.png" alt="">
+                    </span>
+                    <div class="wind-speed-meter-container-outer">
+                        <div class="meter-container-inner flex-center">
+                            <div class="meter-outer flex-center">
+                                <div class="meter-inner flex-center">
+                                    <span id="chance-of-rain-reading">90%</span>
+                                </div>
+                            </div>
+                            <svg class="meter-svg-container" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                <circle class="wind-meter" cx="7.5dvh" cy="7.5dvh" r="6.8dvh" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dust">
+                <p>Dust mass</p>
+                <div class="weather-icon-display">
+                    <span class="icon flex-center">
+                        <img src="assets/icons8-dust-90.png" alt="">
+                    </span>
+                    <span class="numeric-meter" id="dust-meter">10g</span>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -104,6 +197,12 @@
             <div class="air-pollutants">Air pollutants</div>
         </section>
     </div>
+
+    <!-- pointers -->
+    <div class="absolute-hidden" id="hourly"></div>
+    <div class="absolute-hidden" id="daily"></div>
+    <div class="absolute-hidden" id="past"></div>
+    <div class="absolute-hidden" id="air-quality"></div>
 
 </body>
 </html>
