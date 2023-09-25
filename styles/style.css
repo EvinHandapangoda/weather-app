@@ -7,6 +7,10 @@
 
 body {
     font-family: 'Poppins', sans-serif ;
+    overflow: hidden;
+}
+
+:root {
     /* variables */
     --page-height: calc(100dvh - 6em);
     --top-bar-color: rgb(51, 51, 51);
@@ -14,8 +18,9 @@ body {
     --container-color: rgba(207, 207, 207, 0.392);
     --box-shadow: 0px 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.263);
     --button-color: rgb(70, 129, 244);
-    --component-heading-color: rgb(157, 155, 155);
-    --meter-stroke:  rgb(38, 255, 0);
+    --gray-text: rgb(157, 155, 155);
+    --progress-bar-color:  rgb(38, 255, 0);
+    --end-stroke: 0;
 }
 
 /* utility classes */
@@ -23,7 +28,6 @@ body {
     display: flex;
     height: var(--page-height);
     flex-direction: column;
-    border-bottom:2px solid rgb(0, 0, 0) ;
 }
 
 .flex-center {
@@ -42,6 +46,7 @@ body {
     width: 100%;
     height: 6.0rem;
     color: white;
+    z-index: 2000;
 }
 
 .nav-inner {
@@ -135,10 +140,10 @@ body {
 .main-display-container {
     width: 100%;
     height: 50%;
-    background-image: url("../assets/daniela-paola-alchapar-hNcEcKxjHlQ-unsplash.jpg");
-    background-color: rgba(39, 39, 39, 0.681);
+    background-image: url("../assets/tom-barrett-hgGplX3PFBg-unsplash.jpg");
+    background-color: rgba(0, 0, 0, 0.208);
     background-size: cover;
-    background-blend-mode: multiply;
+    background-blend-mode: color-dodge;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,15 +193,16 @@ body {
 
 .information-container > * {
     height: 20dvh;
-    background-color: var(--container-color);
     border-radius: 1rem;  
     box-shadow: var(--box-shadow);
+    background: var(--container-color);
+    z-index: -4;
 }
 
-.information-container > div > p {
+.information-container > div > h4 {
     text-align: center;
     margin-top: 0.5rem;
-    color: var(--component-heading-color);
+    color: var(--gray-text);
 }
 
 .weather-icon-display {
@@ -214,56 +220,37 @@ body {
     width: 3rem;
 }
 
-.meter-container-inner {
-    height: 100%;
-    width: 15dvh;
-    position: relative;
-    margin-left: 10dvh;
-    box-sizing: border-box;
+.circular-progress-container {
+    width: 75%;
+    flex-direction: column;
     z-index: -1;
 }
 
-.meter-outer {
+.circular-progress {
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.29),
+    -6px -6px 10px -1px rgba(238, 237, 237, 0.7);
     height: 15dvh;
     width: 15dvh;
     border-radius: 50%;
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.29),
-    -6px -6px 10px -1px rgba(238, 237, 237, 0.7)
+    background: conic-gradient(var(--progress-bar-color) 100deg, #ededed 0deg);
+    position: relative;
 }
 
-.meter-inner {
-    height: 12.5dvh;
-    width: 12.5dvh;
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    height: 13dvh;
+    width: 13dvh;
     border-radius: 50%;
     box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
-    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.748)
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.748);
+    background-color: rgb(241, 241, 241);
 }
 
-.meter-svg-container {
-    position: absolute;
-    top: 0; 
-    left: 0;   
-    height: 100%;
-    width: 100%;
-    text-align: center;
-
-}
-
-.wind-meter {
-    stroke:  var(--meter-stroke);
-    stroke-width: 1.4dvh;
-    fill: none;
-    stroke-dasharray: 297;
-    stroke-dashoffset: 297;
-    animation: 2s meter-animation linear forwards;
-
-}
-
-@keyframes meter-animation {
-    100%{
-        stroke-dashoffset: 50;
-    }
-    
+.circular-progress-value {
+    font-size: medium;
+    z-index: 1;
+    font-weight: 800;
 }
 
 .meter {
@@ -272,19 +259,8 @@ body {
 
 .numeric-meter {
     font-size: 2.25rem;
-    margin-top: 7%;
-}
-
-#pressure-meter {
-    margin-left: 20%;
-}
-
-#uv-meter {
-    margin-left: 35%;
-}
-
-#dust-meter {
-    margin-left: 32%;
+    width: 75%;
+    height: 95%;
 }
 
 /* daily page */
@@ -301,10 +277,30 @@ body {
     margin-top: 2dvh;
 }
 
-.next-four-info-container > * {
+.day-1,
+.day-2,
+.day-3,
+.day-4 {
     background-color: var(--container-color);
     border-radius: 1rem;
     box-shadow: var(--box-shadow);
+    height: 100%;
+    flex-direction: column;
+}
+
+.next-four-info-container > div > h4 {
+    text-align: center;
+    margin-top: 0.25rem;
+    color: var(--gray-text);
+}
+
+.next-temp {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.next-four-info-container > div > p {
+    color: var(--gray-text);
 }
 
 .wind-speed-chart-container,
@@ -320,6 +316,60 @@ body {
     width: 95%;
     height: 90%;
     box-shadow: var(--box-shadow);
+}
+
+.rain-meters {
+    text-align: center;
+}
+
+.rain-chance-title {
+    color: var(--gray-text);
+}
+
+.rain-chance-meter-container {
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.rain-meter-inner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.rain-chance {
+    font-weight: 800;
+}
+
+.progress-bar {
+    height: 80%;
+    width: 4%;
+    border-radius: 2rem;
+    background-color: white;
+    display: flex;
+    align-items: end;
+}
+
+.progress { 
+    height: 0%;
+    border-radius: 2rem;
+    width: 100%;
+    background-color: var(--progress-bar-color);
+    animation: progress 1s linear forwards
+}
+
+@keyframes progress {
+    100% {
+        height: 70%;
+    }
+}
+
+.rain-chance-date {
+    color: var(--gray-text);
+    font-weight: 600;
+    padding-bottom: 1dvh;
 }
 
 /* past weather page */
@@ -350,6 +400,75 @@ body {
     height: 95%;
     background-color: var(--container-color);
     box-shadow: var(--box-shadow);
+}
+
+.air-quality {
+    flex-direction: column;
+}
+
+.air-quality-meter-outer {
+    width: 30%;
+    height: 60%;
+    flex-direction: column;
+    z-index: -1;
+}
+
+.air-quality-meter {
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.29),
+    -6px -6px 10px -1px rgba(238, 237, 237, 0.7);
+    height: 24dvh;
+    width: 24dvh;
+    border-radius: 50%;
+    background: conic-gradient(var(--progress-bar-color) 100deg, #ededed 0deg);
+    position: relative;
+}
+
+.air-quality-meter::before {
+    content: "";
+    position: absolute;
+    height: 20dvh;
+    width: 20dvh;
+    border-radius: 50%;
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.748);
+    background-color: rgb(241, 241, 241);
+}
+
+.air-quality-value {
+    z-index: 1;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.air-quality-condition {
+    height: 15%;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.air-quality-description {
+    color: var(--gray-text);
+    font-weight: 800;
+}
+
+.air-pollutants {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.pollutant-container {
+    display: flex;
+    align-items: center;
+}
+
+.pollutants-progress-container {
+    margin: 0 4% 0 4%;
+}
+
+.pollutant-condition {
+    font-weight: 800;
+    color: var(--gray-text);
 }
 
 /* pointers */

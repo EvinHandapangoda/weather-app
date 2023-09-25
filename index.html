@@ -58,92 +58,76 @@
         <section class="information-container">
             <!-- components -->
             <div class="wind-speed">
-                <p>Wind Speed</p>
+                <h4>Wind Speed</h4>
                 <div class="weather-icon-display">
                     <div class="icon flex-center">
-                        <img src="assets/icons8-wind-100.png" alt="">
+                        <img src="assets/icons8-wind-100.png" alt="wind_icon">
                     </div>
-                    <div class="wind-speed-meter-container-outer">
-                        <div class="meter-container-inner flex-center">
-                            <div class="meter-outer flex-center">
-                                <div class="meter-inner flex-center">
-                                    <span id="wind reading">90 km/h</span>
-                                </div>
-                            </div>
-                            <svg class="meter-svg-container" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                                <circle class="wind-meter" cx="7.5dvh" cy="7.5dvh" r="6.8dvh" stroke-linecap="round"/>
-                            </svg>
+                    <!-- circular wind speed meter -->
+                    <div class="circular-progress-container flex-center">
+                        <div class="circular-progress flex-center">
+                            <span class="circular-progress-value">22km/h</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="humidity">
-                <p>Humidity</p>
+                <h4>Humidity</h4>
                 <div class="weather-icon-display">
                     <span class="icon flex-center">
-                        <img src="assets/icons8-humidity-100.png" alt="">
+                        <img src="assets/icons8-humidity-100.png" alt="humidity_icon">
                     </span>
-                    <div class="wind-speed-meter-container-outer">
-                        <div class="meter-container-inner flex-center">
-                            <div class="meter-outer flex-center">
-                                <div class="meter-inner flex-center">
-                                    <span id="humidity-reading">90%</span>
-                                </div>
-                            </div>
-                            <svg class="meter-svg-container" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                                <circle class="wind-meter" cx="7.5dvh" cy="7.5dvh" r="6.8dvh" stroke-linecap="round"/>
-                            </svg>
+                    <!-- circular humidity meter -->
+                    <div class="circular-progress-container flex-center">
+                        <div class="circular-progress flex-center">
+                            <span class="circular-progress-value">20%</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="uv">
-                <p>UV</p>
+                <h4>UV</h4>
                 <div class="weather-icon-display">
                     <span class="icon flex-center">
-                        <img src="assets/icons8-uv-64.png" alt="">
+                        <img src="assets/icons8-uv-64.png" alt="uv_icon">
                     </span>
-                    <span class="numeric-meter" id="uv-meter">5</span>
+                    <span class="numeric-meter flex-center" id="uv-meter">5</span>
                 </div>
             </div>
+
             <div class="pressure">
-                <p>Pressure</p>
+                <h4>Pressure</h4>
                 <div class="weather-icon-display">
                     <span class="icon flex-center">
-                        <img src="assets/icons8-pressure-100.png" alt="">
+                        <img src="assets/icons8-pressure-100.png" alt="pressure_icon">
                     </span>
-                    <span class="numeric-meter" id="pressure-meter">720 pa</span>
+                    <span class="numeric-meter flex-center" id="pressure-meter">720 pa</span>
                 </div>
             </div>
+            
             <div class="rain-chance">
-                <p>Chance of rain</p>
+                <h4>Chance of rain</h4>
                 <div class="weather-icon-display">
                     <span class="icon flex-center">
-                        <img src="assets/icons8-rain-100.png" alt="">
+                        <img src="assets/icons8-rain-100.png" alt="rain_icon">
                     </span>
-                    <div class="wind-speed-meter-container-outer">
-                        <div class="meter-container-inner flex-center">
-                            <div class="meter-outer flex-center">
-                                <div class="meter-inner flex-center">
-                                    <span id="chance-of-rain-reading">90%</span>
-                                </div>
-                            </div>
-                            <svg class="meter-svg-container" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                                <circle class="wind-meter" cx="7.5dvh" cy="7.5dvh" r="6.8dvh" stroke-linecap="round"/>
-                            </svg>
+                    <!-- circular rain-chance meter -->
+                    <div class="circular-progress-container flex-center">
+                        <div class="circular-progress flex-center">
+                            <span class="circular-progress-value">10%</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="dust">
-                <p>Dust mass</p>
+                <h4>Dust mass</h4>
                 <div class="weather-icon-display">
                     <span class="icon flex-center">
                         <img src="assets/icons8-dust-90.png" alt="">
                     </span>
-                    <span class="numeric-meter" id="dust-meter">10g</span>
+                    <span class="numeric-meter flex-center" id="dust-meter">10g</span>
                 </div>
             </div>
         </section>
@@ -154,10 +138,26 @@
     <div class="daily-page-container page">
         <!-- next 7 days information -->
         <section class="next-four-info-container">
-            <div class="day-1"></div>
-            <div class="day-2"></div>
-            <div class="day-3"></div>
-            <div class="day-4"></div>
+            <div class="day-1 flex-center">
+                <h4 id="day-1-tag">Day 01</h4>
+                <span id="day-1-temp" class="next-temp">30º C</span>
+                <p class="day-1-condition">Rainy Storm Clouds</p>
+            </div>
+            <div class="day-2 flex-center">
+                <h4 id="day-2-tag">Day 02</h4>
+                <span id="day-2-temp" class="next-temp">30º C</span>
+                <p class="day-2-condition">Rainy Storm Clouds</p>
+            </div>
+            <div class="day-3 flex-center">
+                <h4 id="day-3-tag">Day 03</h4>
+                <span id="day-3-temp" class="next-temp">30º C</span>
+                <p class="day-3-condition">Rainy Storm Clouds</p>
+            </div>
+            <div class="day-4 flex-center">
+                <h4 id="day-4-tag">Day 04</h4>
+                <span id="day-4-temp" class="next-temp">30º C</span>
+                <p class="day-4-condition">Rainy Storm Clouds</p>
+            </div>
         </section>
 
         <!-- wind speed chart -->
@@ -167,7 +167,42 @@
 
         <!-- chance of rain meters -->
         <section class="rain-chance-container flex-center">
-            <div class="rain-meters">Chance of rain for the next 04 days</div>
+            <div class="rain-meters">
+                <h4 class="rain-chance-title">Chance of rain for the next 04 days</h4>
+                <div class="rain-chance-meter-container">
+                    <div class="rain-meter-inner-container">
+                        <span class="rain-chance">70%</span>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="rain-chance-date">Day 01</span>
+                    </div>
+
+                    <div class="rain-meter-inner-container">
+                        <span class="rain-chance">70%</span>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="rain-chance-date">Day 02</span>
+                    </div>
+
+                    <div class="rain-meter-inner-container">
+                        <span class="rain-chance">70%</span>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="rain-chance-date">Day 03</span>
+                    </div>
+
+                    <div class="rain-meter-inner-container">
+                        <span class="rain-chance">70%</span>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="rain-chance-date">Day 04</span>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -189,12 +224,73 @@
     <div class="air-quality-page-container page">
         <!-- todays air quality -->
         <section class="todays-air-quality-container flex-center">
-            <div class="air-quality">Todays air quality</div>
+            <div class="air-quality flex-center">
+                <h2>Todays Air Quality</h2>
+                <!-- circular rain-chance meter -->
+                <div class="air-quality-meter-outer flex-center">
+                    <div class="air-quality-meter flex-center">
+                        <span class="air-quality-value">50</span>
+                    </div>
+                </div>
+                <span class="air-quality-condition">Good</span>
+                <span class="air-quality-description">Air Quality is considered satisfactory, and air pollution poses 
+                    little to no risk
+                </span>
+            </div>
         </section>
 
         <!-- air pollutants -->
         <section class="air-pollutants-container flex-center">
-            <div class="air-pollutants">Air pollutants</div>
+            <div class="air-pollutants">
+                <div class="pollutant-container">
+                    <div class="pollutants-progress-container">
+                        <div class="circular-progress flex-center">
+                            <span class="circular-progress-value">22 ppm</span>
+                        </div>
+                    </div>
+
+                    <div class="pollutant-description">
+                        <h2>NO2(Nitrogen Dioxide)</h2>
+                        <span class="pollutant-condition">Good</span>
+                    </div>
+                </div>
+                <div class="pollutant-container">
+                    <div class="pollutants-progress-container">
+                        <div class="circular-progress flex-center">
+                            <span class="circular-progress-value">22 ppm</span>
+                        </div>
+                    </div>
+
+                    <div class="pollutant-description">
+                        <h2>NO2(Nitrogen Dioxide)</h2>
+                        <span class="pollutant-condition">Good</span>
+                    </div>
+                </div>
+                <div class="pollutant-container">
+                    <div class="pollutants-progress-container">
+                        <div class="circular-progress flex-center">
+                            <span class="circular-progress-value">22 ppm</span>
+                        </div>
+                    </div>
+
+                    <div class="pollutant-description">
+                        <h2>NO2(Nitrogen Dioxide)</h2>
+                        <span class="pollutant-condition">Good</span>
+                    </div>
+                </div>
+                <div class="pollutant-container">
+                    <div class="pollutants-progress-container">
+                        <div class="circular-progress flex-center">
+                            <span class="circular-progress-value">22 ppm</span>
+                        </div>
+                    </div>
+
+                    <div class="pollutant-description">
+                        <h2>NO2(Nitrogen Dioxide)</h2>
+                        <span class="pollutant-condition">Good</span>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -204,5 +300,10 @@
     <div class="absolute-hidden" id="past"></div>
     <div class="absolute-hidden" id="air-quality"></div>
 
+
+    <!-- REMOVE THIS AND ADD TO JS FOLDER -->
+    <script>
+        document.querySelector(':root').style.setProperty('--end-stroke', 100)
+    </script>
 </body>
 </html>
