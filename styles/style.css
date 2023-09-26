@@ -132,6 +132,8 @@ body {
     color: rgb(72, 255, 127);
  }
 
+/* ---------------------------------------- */
+
  /* hourly page */
 .hourly-page-container {
     align-items: center ;
@@ -232,7 +234,7 @@ body {
     height: 15dvh;
     width: 15dvh;
     border-radius: 50%;
-    background: conic-gradient(var(--progress-bar-color) 100deg, #ededed 0deg);
+    background: conic-gradient(var(--progress-bar-color) 0deg, #ededed 0deg);
     position: relative;
 }
 
@@ -262,6 +264,8 @@ body {
     width: 75%;
     height: 95%;
 }
+
+/* ---------------------------------------- */
 
 /* daily page */
 .daily-page-container {
@@ -316,11 +320,19 @@ body {
     width: 95%;
     height: 90%;
     box-shadow: var(--box-shadow);
+    text-align: center;
+    flex-direction: column;
 }
 
-.rain-meters {
-    text-align: center;
+.speed-chart > h4 {
+    color: var(--gray-text);
 }
+
+.speed-chart-container {
+    height: 90%;
+    width: 80%;
+}
+
 
 .rain-chance-title {
     color: var(--gray-text);
@@ -372,6 +384,8 @@ body {
     padding-bottom: 1dvh;
 }
 
+/* ---------------------------------------- */
+
 /* past weather page */
 .past-weather-container > * {
     height: 50%;
@@ -385,6 +399,14 @@ body {
     height: 95%;
     background-color: var(--container-color);
     box-shadow: var(--box-shadow);
+    text-align: center;
+    color: var(--gray-text);
+    flex-direction: column;
+}
+
+.past-chart-container {
+    width: 90%;
+    height: 90%;
 }
 
 /* air quality page */

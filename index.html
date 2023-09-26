@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stratosphere</title>
     <link rel="stylesheet" href="styles/style.css">
+    <!-- linking stylesheet -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
     </style>
@@ -65,8 +66,8 @@
                     </div>
                     <!-- circular wind speed meter -->
                     <div class="circular-progress-container flex-center">
-                        <div class="circular-progress flex-center">
-                            <span class="circular-progress-value">22km/h</span>
+                        <div class="circular-progress flex-center" id="wind-speed-meter">
+                            <span class="circular-progress-value" id="wind-meter-value">0 km/h</span>
                         </div>
                     </div>
                 </div>
@@ -80,8 +81,8 @@
                     </span>
                     <!-- circular humidity meter -->
                     <div class="circular-progress-container flex-center">
-                        <div class="circular-progress flex-center">
-                            <span class="circular-progress-value">20%</span>
+                        <div class="circular-progress flex-center" id="humidity-meter">
+                            <span class="circular-progress-value" id="humidity-meter-value">0%</span>
                         </div>
                     </div>
                 </div>
@@ -115,8 +116,8 @@
                     </span>
                     <!-- circular rain-chance meter -->
                     <div class="circular-progress-container flex-center">
-                        <div class="circular-progress flex-center">
-                            <span class="circular-progress-value">10%</span>
+                        <div class="circular-progress flex-center" id="rain-chance-meter">
+                            <span class="circular-progress-value" id="rain-chance-meter-value">0%</span>
                         </div>
                     </div>
                 </div>
@@ -162,7 +163,12 @@
 
         <!-- wind speed chart -->
         <section class="wind-speed-chart-container flex-center">
-            <div class="speed-chart">Speed of wind for the next 4 days</div>
+            <div class="speed-chart flex-center">
+                <h4>Speed of wind for the next 4 days</h4> 
+                <div class="speed-chart-container">
+                    <canvas id="wind-speed-next-04-days"></canvas>
+                </div>
+            </div>
         </section>
 
         <!-- chance of rain meters -->
@@ -210,12 +216,22 @@
     <div class="past-weather-container page">
         <!-- last 7 days temperature chart -->
         <section class="last-seven-temp-info-container flex-center">
-            <div class="temp-chart">Temperature for the last 7 days</div>
+            <div class="temp-chart flex-center">
+                <h4>Temperatures for the last 7 days</h4>
+                <div class="past-chart-container">
+                    <canvas id="temp-last-07-days"></canvas>
+                </div>
+            </div>
         </section>
 
         <!-- wind speed meters -->
-        <section class="wind-speed-meter-container flex-center">
-            <div class="speed-meter">Speed of wind for the last 7 days</div>
+        <section class="wind-speed-chart-container flex-center">
+            <div class="speed-chart flex-center">
+                <h4>Speed of wind for the last 7 days</h4>
+                <div class="past-chart-container">
+                    <canvas id="speed-last-07-days"></canvas>
+                </div>
+            </div>
         </section>
     </div>
 
@@ -300,10 +316,18 @@
     <div class="absolute-hidden" id="past"></div>
     <div class="absolute-hidden" id="air-quality"></div>
 
+    <!-- js links -->
 
-    <!-- REMOVE THIS AND ADD TO JS FOLDER -->
-    <script>
-        document.querySelector(':root').style.setProperty('--end-stroke', 100)
+    <!-- chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- jquery CDN -->
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous">
     </script>
+
+    <script src="scripts/app.js"></script>
 </body>
 </html>
