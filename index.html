@@ -19,8 +19,8 @@
                 <div class="logo">Stratosphere</div>
 
                 <div class="input-field-search-button">
-                    <input type="text" placeholder="Type city name or postcode" class="input-field">
-                    <button class="submit-btn">
+                    <input type="text" placeholder="Type city name or postcode" class="input-field" id="input-field">
+                    <button class="submit-btn" id="submit-btn">
                         <img src="assets/magnifying-glass-svgrepo-com (1).svg" alt="search">
                     </button>
                 </div>
@@ -44,14 +44,14 @@
 
 
     <!-- Hourly page -->
-    <div class="hourly-page-container page">
+    <div class="hourly-page-container page" id="hourly">
         <!-- main-weather display -->
         <section class="main-display-container">
             <div class="weather-display">
-                <img src="assets/icons8-rain-cloud-96.png" alt="cloud">
-                <div class="main-temp flex-center">30º C</div>
-                <div class="main-condition flex-center">Rainy Storm Clouds</div>
-                <div class="main-location flex-center">New York, USA</div>
+                <img src="assets/icons8-rain-cloud-96.png" id="cloud-icon" alt="cloud">
+                <div class="main-temp flex-center" id="main-temp">30º C</div>
+                <div class="main-condition flex-center" id="main-condition">Rainy Storm Clouds</div>
+                <div class="main-location flex-center" id="main-location">New York, USA</div>
             </div>
         </section>
 
@@ -67,7 +67,7 @@
                     <!-- circular wind speed meter -->
                     <div class="circular-progress-container flex-center">
                         <div class="circular-progress flex-center" id="wind-speed-meter">
-                            <span class="circular-progress-value" id="wind-meter-value">0 km/h</span>
+                            <span class="circular-progress-value" id="wind-meter-value"></span>
                         </div>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                     <!-- circular humidity meter -->
                     <div class="circular-progress-container flex-center">
                         <div class="circular-progress flex-center" id="humidity-meter">
-                            <span class="circular-progress-value" id="humidity-meter-value">0%</span>
+                            <span class="circular-progress-value" id="humidity-meter-value"></span>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                     <span class="icon flex-center">
                         <img src="assets/icons8-uv-64.png" alt="uv_icon">
                     </span>
-                    <span class="numeric-meter flex-center" id="uv-meter">5</span>
+                    <span class="numeric-meter flex-center" id="uv-meter"></span>
                 </div>
             </div>
 
@@ -104,31 +104,31 @@
                     <span class="icon flex-center">
                         <img src="assets/icons8-pressure-100.png" alt="pressure_icon">
                     </span>
-                    <span class="numeric-meter flex-center" id="pressure-meter">720 pa</span>
+                    <span class="numeric-meter flex-center" id="pressure-meter"></span>
                 </div>
             </div>
             
-            <div class="rain-chance">
-                <h4>Chance of rain</h4>
+            <div class="cloud-coverage">
+                <h4>Cloud Coverage</h4>
                 <div class="weather-icon-display">
                     <span class="icon flex-center">
                         <img src="assets/icons8-rain-100.png" alt="rain_icon">
                     </span>
                     <!-- circular rain-chance meter -->
                     <div class="circular-progress-container flex-center">
-                        <div class="circular-progress flex-center" id="rain-chance-meter">
-                            <span class="circular-progress-value" id="rain-chance-meter-value">0%</span>
+                        <div class="circular-progress flex-center" id="cloud-coverage-meter">
+                            <span class="circular-progress-value" id="cloud-coverage-value"></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="dust">
-                <h4>Dust mass</h4>
+            <div class="visibility">
+                <h4>Visibility</h4>
                 <div class="weather-icon-display">
                     <span class="icon flex-center">
                         <img src="assets/icons8-dust-90.png" alt="">
                     </span>
-                    <span class="numeric-meter flex-center" id="dust-meter">10g</span>
+                    <span class="numeric-meter flex-center" id="visibility-meter"></span>
                 </div>
             </div>
         </section>
@@ -136,7 +136,7 @@
 
 
     <!-- Daily page -->
-    <div class="daily-page-container page">
+    <div class="daily-page-container page" id="daily">
         <!-- next 7 days information -->
         <section class="next-four-info-container">
             <div class="day-1 flex-center">
@@ -213,7 +213,7 @@
     </div>
 
     <!-- Past weather page -->
-    <div class="past-weather-container page">
+    <div class="past-weather-container page" id="past">
         <!-- last 7 days temperature chart -->
         <section class="last-seven-temp-info-container flex-center">
             <div class="temp-chart flex-center">
@@ -237,15 +237,15 @@
 
 
     <!-- Air quality page -->
-    <div class="air-quality-page-container page">
+    <div class="air-quality-page-container page" id="air-quality">
         <!-- todays air quality -->
         <section class="todays-air-quality-container flex-center">
             <div class="air-quality flex-center">
                 <h2>Todays Air Quality</h2>
                 <!-- circular rain-chance meter -->
                 <div class="air-quality-meter-outer flex-center">
-                    <div class="air-quality-meter flex-center">
-                        <span class="air-quality-value">50</span>
+                    <div class="air-quality-meter flex-center" id="air-quality-meter">
+                        <span class="air-quality-value" id="air-quality-value">50</span>
                     </div>
                 </div>
                 <span class="air-quality-condition">Good</span>
@@ -260,8 +260,8 @@
             <div class="air-pollutants">
                 <div class="pollutant-container">
                     <div class="pollutants-progress-container">
-                        <div class="circular-progress flex-center">
-                            <span class="circular-progress-value">22 ppm</span>
+                        <div class="circular-progress flex-center" id="no2-meter">
+                            <span class="circular-progress-value" id="no2-value">22 ppm</span>
                         </div>
                     </div>
 
@@ -272,49 +272,43 @@
                 </div>
                 <div class="pollutant-container">
                     <div class="pollutants-progress-container">
-                        <div class="circular-progress flex-center">
-                            <span class="circular-progress-value">22 ppm</span>
+                        <div class="circular-progress flex-center" id="ozone-meter">
+                            <span class="circular-progress-value" id="ozone-value">22 ppm</span>
                         </div>
                     </div>
 
                     <div class="pollutant-description">
-                        <h2>NO2(Nitrogen Dioxide)</h2>
+                        <h2>03(Ozone)</h2>
                         <span class="pollutant-condition">Good</span>
                     </div>
                 </div>
                 <div class="pollutant-container">
                     <div class="pollutants-progress-container">
-                        <div class="circular-progress flex-center">
-                            <span class="circular-progress-value">22 ppm</span>
+                        <div class="circular-progress flex-center" id="co-meter">
+                            <span class="circular-progress-value" id="co-value">22 ppm</span>
                         </div>
                     </div>
 
                     <div class="pollutant-description">
-                        <h2>NO2(Nitrogen Dioxide)</h2>
+                        <h2>CO(Carbon Monoxide)</h2>
                         <span class="pollutant-condition">Good</span>
                     </div>
                 </div>
                 <div class="pollutant-container">
                     <div class="pollutants-progress-container">
-                        <div class="circular-progress flex-center">
-                            <span class="circular-progress-value">22 ppm</span>
+                        <div class="circular-progress flex-center" id="so2-meter">
+                            <span class="circular-progress-value" id="so2-value">22 ppm</span>
                         </div>
                     </div>
 
                     <div class="pollutant-description">
-                        <h2>NO2(Nitrogen Dioxide)</h2>
+                        <h2>S02(Sulphur Dioxide)</h2>
                         <span class="pollutant-condition">Good</span>
                     </div>
                 </div>
             </div>
         </section>
     </div>
-
-    <!-- pointers -->
-    <div class="absolute-hidden" id="hourly"></div>
-    <div class="absolute-hidden" id="daily"></div>
-    <div class="absolute-hidden" id="past"></div>
-    <div class="absolute-hidden" id="air-quality"></div>
 
     <!-- js links -->
 

@@ -1,6 +1,76 @@
 //importing Chart from chart.js
 const Chart = window.Chart;
 
+
+//updating the values of the meters
+const updateMeter = (meterId, valueId, unit, startValue, endValue) =>{
+    const progress = setInterval(() => {
+        if(endValue == 0){
+            startValue--;
+            clearInterval(progress);
+        } 
+        startValue++;
+        valueId.textContent = `${startValue + " " + unit}`;
+        meterId.style.background = `conic-gradient(rgb(83, 183, 255) ${startValue*3.6}deg, rgb(73, 73, 73) 0deg)`;
+        if(startValue == endValue){
+            clearInterval(progress);
+        }
+    }, 15);
+}
+
+//updating the values of text meter values
+function updateTextMeters(valueId, unit, startValue, endValue, speed){
+    const progress = setInterval(() => {
+        startValue++;
+        valueId.textContent = `${startValue + " " + unit}`;  
+        if(startValue == endValue){
+            clearInterval(progress);
+        }
+    }, speed);
+}
+
+//retrieving weather data from weather api
+const   submitButton = $('#submit-btn'),
+        inputField = $('#input-field'),
+        cloudIcon = $('#cloud-icon'),
+        mainTemp = $('#main-temp'),
+        mainCondition = $('#main-condition'),
+        mainLocation = $("#main-location"),
+        windSpeed = document.getElementById("wind-meter-value"),
+        windSpeedMeter = document.getElementById('wind-speed-meter'),
+        humidityMeter = document.getElementById('humidity-meter'),
+        humidity = document.getElementById('humidity-meter-value'),
+        uvMeter = document.getElementById('uv-meter'),
+        pressureMeter = document.getElementById('pressure-meter'),
+        visibilityMeter = document.getElementById('visibility-meter'),
+        cloudCoverageMeter = document.getElementById('cloud-coverage-meter'),
+        cloudCoverage = document.getElementById('cloud-coverage-value');
+
+
+submitButton.click(() => {
+    $.ajax({
+        method : "GET",
+        url : `http://api.weatherapi.com/v1/current.json?key=e2139a4606d04c27ae0142813232009&q=${inputField.val()}`,
+        success : (response) => {
+            let current = response.current;
+            console.log(response);
+            mainTemp.text(current.temp_c + "º C");
+            mainCondition.text(current.condition.text);
+            mainLocation.text(response.location.name + ", " + response.location.country);
+            cloudIcon.prop('src', current.condition.icon);
+            updateMeter(windSpeedMeter, windSpeed, "km/h", 0, Math.round(current.wind_kph));
+            updateMeter(humidityMeter, humidity, "",0 , Math.round(current.humidity));
+            updateTextMeters(uvMeter, "", 0, Math.round(current.uv), 100);
+            updateTextMeters(pressureMeter, "kPa", 0, Math.round(current.pressure_in), 60);
+            updateMeter(cloudCoverageMeter, cloudCoverage, "%", 0, Math.round(current.cloud));
+            updateTextMeters(visibilityMeter, "km", 0, Math.round(current.vis_km), 70);
+        }
+    })    
+});
+
+
+
+
 //function to create and return a new chart
 function createChart(canvasId, rowLabels, data, units) {
     let chart = new Chart(canvasId,
@@ -33,7 +103,20 @@ function createChart(canvasId, rowLabels, data, units) {
                         ticks: {
                             callback: function(value, index, ticks) {
                                 return value + " " + units;
-                            }
+                            },
+                            color: 'white',
+                        },
+                        grid: {
+                            display: false,
+                        }    
+                    },
+                    
+                    x: {
+                        ticks: {
+                            color: 'white',
+                        },
+                        grid: {
+                            display: true,
                         }
                     }
                 }
@@ -49,7 +132,7 @@ const futureFourDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday'];
 const futureSpeeds = [26, 28, 29, 26, 50];
 const speedUnit = "km/h";
 
-const speedFutureChart = createChart(speedFutureCanvas, futureFourDays, futureSpeeds, speedUnit );
+createChart(speedFutureCanvas, futureFourDays, futureSpeeds, speedUnit );
 
 
 const tempPastCanvas = document.getElementById('temp-last-07-days');
@@ -57,65 +140,48 @@ const pastSevenDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', '
 const pastTemps = [26, 28, 23, 26, 24, 28, 22, 50];
 const tempUnit = "º";
 
-const tempPastChart = createChart(tempPastCanvas, pastSevenDays, pastTemps, tempUnit);
+createChart(tempPastCanvas, pastSevenDays, pastTemps, tempUnit);
 
 const speedPastCanvas = document.getElementById('speed-last-07-days');
 const pastSpeeds = [22, 43, 19, 56, 32, 44, 31];
 
-const speedPastChart = createChart(speedPastCanvas, pastSevenDays, pastSpeeds, speedUnit)
+createChart(speedPastCanvas, pastSevenDays, pastSpeeds, speedUnit)
 
 
-//updating the values of the meters
-function updateMeter(meterId, valueId, unit, startValue, endValue){
-    const progress = setInterval(() => {
-        startValue++;
 
-        valueId.textContent = `${startValue + " " + unit}`;
-        meterId.style.background = `conic-gradient(rgb(38, 255, 0) ${startValue*3.6}deg, #ededed 0deg)`
+const loadMeters = () => {
+    let airQualityMeter = document.getElementById('air-quality-meter');
+    let airQualityValue = document.getElementById('air-quality-value');
 
-        if(startValue == endValue){
-            clearInterval(progress);
-        }
-    }, 30);
+    updateMeter(airQualityMeter, airQualityValue, "", 0, 50)
+
+    let no2Meter = document.getElementById('no2-meter');
+    let no2Value = document.getElementById('no2-value');
+
+    updateMeter(no2Meter, no2Value, "ppm", 0, 20);
+
+    let ozoneMeter = document.getElementById('ozone-meter');
+    let ozoneValue = document.getElementById('ozone-value');
+
+    updateMeter(ozoneMeter, ozoneValue, "ppm", 0, 40);
+
+    let coMeter = document.getElementById('co-meter');
+    let coValue = document.getElementById('co-value');
+
+    updateMeter(coMeter, coValue, "ppm", 0, 60);
+
+    let so2Meter = document.getElementById('so2-meter');
+    let so2Value = document.getElementById('so2-value');
+
+    updateMeter(so2Meter, so2Value, "ppm", 0, 80);
 }
 
+const airQuality = document.getElementById('air-quality');
 
-let windSpeedMeter = document.getElementById('wind-speed-meter');
-let windMeterValue = document.getElementById('wind-meter-value');
+const airQualityMeters = new IntersectionObserver(
+    () => {
+        loadMeters();
+    }
+)
 
-updateMeter(windSpeedMeter, windMeterValue, "km/h", 0, 50);
-
-let humidityMeter = document.getElementById('humidity-meter');
-let humidityMeterValue = document.getElementById('humidity-meter-value');
-
-updateMeter(humidityMeter, humidityMeterValue, "%", 0, 75);
-
-let rainChanceMeter = document.getElementById('rain-chance-meter');
-let rainChanceMeterValue = document.getElementById('rain-chance-meter-value');
-
-updateMeter(rainChanceMeter, rainChanceMeterValue, "%", 0, 25);
-
-//updating the values of text meter values
-function updateTextMeters(valueId, unit, startValue, endValue, speed){
-    const progress = setInterval(() => {
-        startValue++;
-
-        valueId.textContent = `${startValue + " " + unit}`;    
-
-        if(startValue == endValue){
-            clearInterval(progress);
-        }
-    }, speed);
-}
-
-let uvMeter = document.getElementById('uv-meter');
-
-updateTextMeters(uvMeter, "", 0, 5, 100);
-
-let pressureMeter = document.getElementById('pressure-meter');
-
-updateTextMeters(pressureMeter, "pa", 0, 500, 0.01);
-
-let dustMeter = document.getElementById('dust-meter');
-
-updateTextMeters(dustMeter, "g", 0, 10, 100);
+airQualityMeters.observe(airQuality);

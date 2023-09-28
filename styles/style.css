@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-padding-top: 12dvh;
 }
 
 body {
@@ -12,15 +13,16 @@ body {
 
 :root {
     /* variables */
-    --page-height: calc(100dvh - 6em);
-    --top-bar-color: rgb(51, 51, 51);
-    --nav-bar-color: rgb(65, 65, 65);
-    --container-color: rgba(207, 207, 207, 0.392);
-    --box-shadow: 0px 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.263);
+    --page-height: calc(88dvh);
+    --top-bar-color: rgb(35, 35, 35);
+    --nav-bar-color: rgb(49, 49, 49);
+    --container-color: rgba(255, 255, 255, 0.192);
+    --box-shadow: 0px 0.25rem 0.5rem 0 rgba(28, 28, 28, 0.5);
     --button-color: rgb(70, 129, 244);
-    --gray-text: rgb(157, 155, 155);
-    --progress-bar-color:  rgb(38, 255, 0);
-    --end-stroke: 0;
+    --gray-text: rgb(216, 216, 216);
+    --circular-meter-font-color: rgb(255, 255, 255);
+    --numeric-meter-text-color:rgb(255, 255, 255); 
+    --progress-bar-color:  rgb(83, 183, 255);
 }
 
 /* utility classes */
@@ -28,6 +30,7 @@ body {
     display: flex;
     height: var(--page-height);
     flex-direction: column;
+    background: linear-gradient(to bottom, #3f6fb1, #3663a4, #2d5798, #244c8b, #1b417f);
 }
 
 .flex-center {
@@ -44,14 +47,15 @@ body {
 /* search bar and navigation bar */
 .navigation-container {
     width: 100%;
-    height: 6.0rem;
+    height: 12dvh;
     color: white;
-    z-index: 2000;
 }
 
 .nav-inner {
     position: fixed;
     width: 100%;
+    box-shadow: 0px -7px 15px 6px rgba(0,0,0,1);
+    z-index: 10;
 }
 
 .top-bar {
@@ -60,18 +64,18 @@ body {
     justify-content: space-between;
     justify-content: space-between;
     width: 100%;
-    height: 4em;    
+    height: 8dvh;    
     background-color: var(--top-bar-color);
 }
 
 .logo {
-    margin-left: 1rem;
+    margin-left: 4dvh;
 }
 
 .input-field {
     text-align: center;
     font-size: large;
-    width: 35rem;
+    width: 35dvw;
     height: 2.5rem;
     border-radius: 0.25rem;
     border: none;
@@ -104,13 +108,13 @@ body {
 }
 
 .date-time {
-    margin-right: 1rem;
+    margin-right: 4dvh;
     flex-direction: column;
 }
 
 .nav-bar {
     display: flex;
-    height: 2em;
+    height: 4dvh;
     justify-content: center;
     background-color: var(--nav-bar-color);
 }
@@ -121,6 +125,7 @@ body {
     list-style: none;
     justify-content: space-between;
     align-items: center;
+    font-size: 2dvh;
  }
 
  .nav-bar > ul > li > a {
@@ -160,8 +165,8 @@ body {
 }
 
 .weather-display > img {
-    width: 6rem;
-    height: 6rem;
+    width: 12dvh;
+    height: 12dvh;
 }
 
 .weather-display > div {
@@ -198,8 +203,9 @@ body {
     border-radius: 1rem;  
     box-shadow: var(--box-shadow);
     background: var(--container-color);
-    z-index: -4;
+    z-index: 0;
 }
+
 
 .information-container > div > h4 {
     text-align: center;
@@ -229,13 +235,10 @@ body {
 }
 
 .circular-progress {
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.29),
-    -6px -6px 10px -1px rgba(238, 237, 237, 0.7);
     height: 15dvh;
     width: 15dvh;
     border-radius: 50%;
-    background: conic-gradient(var(--progress-bar-color) 0deg, #ededed 0deg);
-    position: relative;
+    background: conic-gradient(var(--progress-bar-color) 0deg, rgb(73, 73, 73) 0deg);
 }
 
 .circular-progress::before {
@@ -244,23 +247,21 @@ body {
     height: 13dvh;
     width: 13dvh;
     border-radius: 50%;
-    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
-    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.748);
-    background-color: rgb(241, 241, 241);
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.052),
+    inset -4px -4px 6px -1px rgba(0, 0, 0, 0.078);
+    background-color: rgb(81, 114, 167);
 }
 
 .circular-progress-value {
     font-size: medium;
     z-index: 1;
     font-weight: 800;
-}
-
-.meter {
-    border: 1px solid greenyellow;
+    color: var(--circular-meter-font-color);
 }
 
 .numeric-meter {
-    font-size: 2.25rem;
+    color: var(--numeric-meter-text-color);
+    font-size: 4dvh;
     width: 75%;
     height: 95%;
 }
@@ -288,7 +289,7 @@ body {
     background-color: var(--container-color);
     border-radius: 1rem;
     box-shadow: var(--box-shadow);
-    height: 100%;
+    height: 16dvh;
     flex-direction: column;
 }
 
@@ -296,15 +297,17 @@ body {
     text-align: center;
     margin-top: 0.25rem;
     color: var(--gray-text);
+    font-size: 2dvh;
 }
 
 .next-temp {
-    font-size: 2rem;
+    font-size: 5dvh;
     font-weight: 800;
 }
 
 .next-four-info-container > div > p {
     color: var(--gray-text);
+    font-size: 2dvh;
 }
 
 .wind-speed-chart-container,
@@ -359,7 +362,7 @@ body {
     height: 80%;
     width: 4%;
     border-radius: 2rem;
-    background-color: white;
+    background-color: rgb(73, 73, 73);
     display: flex;
     align-items: end;
 }
@@ -426,18 +429,16 @@ body {
 
 .air-quality {
     flex-direction: column;
+    z-index: 0;
 }
 
 .air-quality-meter-outer {
     width: 30%;
     height: 60%;
     flex-direction: column;
-    z-index: -1;
 }
 
 .air-quality-meter {
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.29),
-    -6px -6px 10px -1px rgba(238, 237, 237, 0.7);
     height: 24dvh;
     width: 24dvh;
     border-radius: 50%;
@@ -451,20 +452,21 @@ body {
     height: 20dvh;
     width: 20dvh;
     border-radius: 50%;
-    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
-    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.748);
-    background-color: rgb(241, 241, 241);
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.292),
+    inset -4px -4px 6px -1px rgba(0, 0, 0, 0.268);
+    background-color: rgb(95, 132, 185);
 }
 
 .air-quality-value {
     z-index: 1;
-    font-size: 2rem;
+    font-size: 5dvh;
     font-weight: 600;
+    color: var(--circular-meter-font-color);
 }
 
 .air-quality-condition {
     height: 15%;
-    font-size: 1.75rem;
+    font-size: 4dvh;
     font-weight: 600;
 }
 
@@ -493,21 +495,5 @@ body {
     color: var(--gray-text);
 }
 
-/* pointers */
-#hourly {
-    top: -6em;
-}
-
- #daily {
-    top: var(--page-height);
- }
-
- #past {
-    top: calc(2*var(--page-height));
- }
-
- #air-quality {
-    top: calc(3*var(--page-height));
- }
 
 
