@@ -17,12 +17,13 @@
             <!-- top bar containing input field, logo and date time -->
             <section class="top-bar">
                 <div class="logo">Stratosphere</div>
-
+                
+                <!-- input-field and search-button -->
                 <div class="input-field-search-button">
-                    <input type="text" placeholder="Type city name or postcode" class="input-field" id="input-field" onenter>
+                    <input type="text" placeholder="Type city name or postcode" class="input-field" id="input-field">
                     <a href="#hourly">
                         <button class="submit-btn" id="submit-btn">
-                            <img src="assets/magnifying-glass-svgrepo-com (1).svg" alt="search">
+                            <img src="assets/magnifying-glass.svg" alt="search">
                         </button>
                     </a>
                 </div>
@@ -44,22 +45,19 @@
         </header>
     </div>
 
-
-
+    <!-- hourly weather update page -->
     <div class="hourly-page-container page" id="hourly">
-
+        <!-- main weather, condition, location display -->
         <section class="main-display-container">
             <div class="weather-display">
-                <img src="" id="cloud-icon" alt="cloud">
-                <div class="main-temp flex-center" id="main-temp">30º C</div>
-                <div class="main-condition flex-center" id="main-condition">Rainy Storm Clouds</div>
-                <div class="main-location flex-center" id="main-location">New York, USA</div>
+                <img src="assets/cloud.png" id="cloud-icon" alt="cloud">
+                <div class="main-temp flex-center" id="main-temp"></div>
+                <div class="main-condition flex-center" id="main-condition"></div>
+                <div class="main-location flex-center" id="main-location"></div>
             </div>
         </section>
-
-
+        <!-- weather information components wind-speed, humidity, uv, pressure, coverage, visibility -->
         <section class="information-container">
-
             <div class="wind-speed component">
                 <h4>Wind Speed</h4>
                 <div class="meter-display flex-center">
@@ -76,7 +74,7 @@
                 <h4>Humidity</h4>
                 <div class="meter-display flex-center">
                     <div class="circular-progress flex-center" id="humidity-meter">
-                        <span class="circular-progress-value" id="humidity-meter-value">80</span>
+                        <span class="circular-progress-value" id="humidity-meter-value"></span>
                     </div>
                 </div>
                 <div class="icon-container">
@@ -87,7 +85,7 @@
             <div class="uv component">
                 <h4>UV</h4>
                 <div class="meter-display flex-center">
-                    <span class="numeric-meter" id="uv-meter">5</span>
+                    <span class="numeric-meter" id="uv-meter"></span>
                 </div>
                 <div class="icon-container">
                     <img src="assets/uv.png" alt="uv_icon"> 
@@ -97,7 +95,7 @@
             <div class="pressure component">
                 <h4>Pressure</h4>
                 <div class="meter-display flex-center">
-                    <span class="numeric-meter" id="pressure-meter">720 pa</span>
+                    <span class="numeric-meter" id="pressure-meter"></span>
                 </div>
                 <div class="icon-container">
                     <img src="assets/tire-pressure.png" alt="pressure_icon">
@@ -125,17 +123,22 @@
                 </div> 
             </div>
         </section>
+
+        <div class="theme-changer flex-center" id="theme-changer">
+            <img src="assets/dark-mode.png" alt="" id="theme-icon">
+        </div>
+
+        <div id="alert-box"></div>
     </div>
 
-
-
+    <!-- daily weather forecast page -->
     <div class="daily-page-container page" id="daily">
-        
+        <!-- weather forecast for the next three days -->
         <section class="next-three-info-container">
             <div class="day-1 flex-center">
-                <h4 class="day1-daily">day 01</h4>
-                <span id="day-1-temp" class="next-temp">30</span>
-                <p class="day-1-condition" id="day-1-condition">sunny</p>
+                <h4 class="day1-daily"></h4>
+                <span id="day-1-temp" class="next-temp"></span>
+                <p class="day-1-condition" id="day-1-condition"></p>
             </div>
             <div class="day-2 flex-center">
                 <h4 class="day2-daily"></h4>
@@ -148,8 +151,7 @@
                 <p class="day-3-condition" id="day-3-condition"></p>
             </div>
         </section>
-
-        
+        <!-- wind speed forecast chart for the next three days -->
         <section class="wind-speed-chart-container flex-center">
             <div class="speed-chart flex-center">
                 <h4>Speed of wind for the next 3 days</h4> 
@@ -158,7 +160,7 @@
                 </div>
             </div>
         </section>
-
+        <!-- chance of rain for the next three days -->
         <section class="rain-chance-container flex-center">
             <div class="rain-meters">
                 <h4 class="rain-chance-title">Chance of rain for the next 03 days</h4>
@@ -190,10 +192,10 @@
             </div>
         </section>
     </div>
-
     
+    <!-- past weather details page -->
     <div class="past-weather-container page" id="past">
-       
+       <!-- temperature chart of the last seven days -->
         <section class="last-seven-temp-info-container flex-center">
             <div class="temp-chart flex-center">
                 <h4>Temperatures for the last 7 days</h4>
@@ -202,8 +204,7 @@
                 </div>
             </div>
         </section>
-
-        
+        <!-- wind speed chart of the last seven days -->
         <section class="wind-speed-chart-container flex-center">
             <div class="speed-chart flex-center">
                 <h4>Speed of wind for the last 7 days</h4>
@@ -214,74 +215,66 @@
         </section>
     </div>
 
-
+    <!-- air quality information page -->
     <div class="air-quality-page-container page" id="air-quality">
-       
+       <!-- todays pm10 value with a condition -->
         <section class="todays-air-quality-container flex-center">
             <div class="air-quality flex-center">
                 <h2>Todays Air Quality</h2>
                 
                 <div class="air-quality-meter-outer flex-center">
                     <div class="air-quality-meter flex-center" id="air-quality-meter">
-                        <span class="air-quality-value" id="air-quality-value">50</span>
+                        <span class="air-quality-value" id="air-quality-value"></span>
                     </div>
                 </div>
-                <span class="air-quality-condition">Good</span>
-                <span class="air-quality-description">Air Quality is considered satisfactory, and air pollution poses 
-                    little to no risk
-                </span>
+                <span class="air-quality-condition"></span>
             </div>
         </section>
-
-       
+       <!-- major air pollutant content in air for the day -->
         <section class="air-pollutants-container flex-center">
             <div class="air-pollutants">
                 <div class="pollutant-container">
                     <div class="pollutants-progress-container">
                         <div class="circular-progress flex-center" id="no2-meter">
-                            <span class="circular-progress-value" id="no2-value">22 ppm</span>
+                            <span class="circular-progress-value" id="no2-value"></span>
                         </div>
                     </div>
 
                     <div class="pollutant-description">
-                        <h2 class="pollutant-name">(Nitrogen Dioxide)</h2>
-                        <span class="pollutant-condition">Good</span>
+                        <h2 class="pollutant-name">NO2(Nitrogen Dioxide)</h2>
                     </div>
                 </div>
                 <div class="pollutant-container">
                     <div class="pollutants-progress-container">
                         <div class="circular-progress flex-center" id="ozone-meter">
-                            <span class="circular-progress-value" id="ozone-value">22 ppm</span>
+                            <span class="circular-progress-value" id="ozone-value"></span>
                         </div>
                     </div>
 
                     <div class="pollutant-description">
                         <h2 class="pollutant-name">03(Ozone)</h2>
-                        <span class="pollutant-condition">Good</span>
                     </div>
                 </div>
                 <div class="pollutant-container">
                     <div class="pollutants-progress-container">
                         <div class="circular-progress flex-center" id="co-meter">
-                            <span class="circular-progress-value" id="co-value">22 ppm</span>
+                            <span class="circular-progress-value" id="co-value"></span>
                         </div>
                     </div>
 
                     <div class="pollutant-description">
-                        <h2 class="pollutant-name">CO(Carbon Monoxide)</h2>
-                        <span class="pollutant-condition">Good</span>
+                        <h2 class="pollutant-name">PM2.5</h2>
                     </div>
                 </div>
                 <div class="pollutant-container">
                     <div class="pollutants-progress-container">
                         <div class="circular-progress flex-center" id="so2-meter">
-                            <span class="circular-progress-value" id="so2-value">22 ppm</span>
+                            <span class="circular-progress-value" id="so2-value"></span>
                         </div>
                     </div>
 
                     <div class="pollutant-description">
                         <h2 class="pollutant-name">S02(Sulphur Dioxide)</h2>
-                        <span class="pollutant-condition">Good</span>
                     </div>
                 </div>
             </div>

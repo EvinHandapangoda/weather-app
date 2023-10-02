@@ -14,13 +14,16 @@ body {
 :root {
     /* variables */
     --page-height: calc(88dvh);
+    --page-color : radial-gradient(circle, #408eff, #4994fd, #5299fa, #5c9ff7, #66a4f4);
     --top-bar-color: rgb(35, 35, 35);
     --nav-bar-color: rgb(49, 49, 49);
     --logo-font-size : 1rem;
     --nav-font-size : 1rem;
     --input-field-width : 35dvw;
     --input-field-height : 2.5rem;
-    --container-color: rgba(255, 255, 255, 0.192);
+    --input-field-font : 1.25rem;
+    --placeholder-font-size : 1rem;
+    --container-color:radial-gradient(circle, #1e65cb, #1e66cb, #1f68ca, #2069ca, #216ac9);
     --box-shadow: 0px 0.25rem 0.5rem 0 rgba(28, 28, 28, 0.5);
     --button-color: #1466d8;
     --button-dimensions : 2.5rem;
@@ -29,11 +32,14 @@ body {
     --main-temp-size : 4rem;
     --main-condition-size : 1.5rem;
     --main-location-size : 1.125rem;
+    --theme-icon-dimensions : 2.25rem;
+    --theme-img-dimensions : 1.75rem;
     --gray-text: rgb(216, 216, 216);
     --heading-font : 1rem;
     --circular-meter-font-color: rgb(255, 255, 255);
     --circle-inner-dimensions : 13dvh;
     --circle-outer-dimensions : 15dvh;
+    --circle-inner-color : rgb(30, 102, 203);
     --circular-progress-value-size : 1.125rem;
     --numeric-meter-text-color:rgb(255, 255, 255); 
     --numeric-meter-text-size : 2rem;
@@ -41,13 +47,18 @@ body {
     --day-1-chance: 0;
     --day-2-chance: 0;
     --day-3-chance: 0;
+    --rain-chance-meter-width : 1rem;
+    --rain-chance-date : 1rem;
+    --rain-chance-meter-height : 80%;
+    --next-temp-font-size : 2rem;
+    --rain-chance-date : 1rem;
+    --next-three-condition : 1rem;
     --aq-meter-outer-dimensions : 24dvh;
     --aq-meter-inner-dimensions : 20dvh;
     --air-quality-main-size : 1.75rem;
     --aq-condition-size : 2rem;
     --aq-description-size : 1rem;
     --pollutant-name-size : 1.5rem;
-    --pollutant-condition-size : 1.25rem;
 }
 
 /* utility classes */
@@ -55,7 +66,7 @@ body {
     display: flex;
     height: var(--page-height);
     flex-direction: column;
-    background-image: linear-gradient(to bottom, #3f6fb1, #3663a4, #2d5798, #244c8b, #1b417f);
+    background-image: var(--page-color);
 }
 
 .flex-center {
@@ -95,7 +106,7 @@ body {
 
 .input-field {
     text-align: center;
-    font-size: large;
+    font-size: var(--input-field-font);
     width: var(--input-field-width);
     height: var(--input-field-height);
     border-radius: 0.25rem;
@@ -108,7 +119,7 @@ body {
 
 ::placeholder {
     text-align: center;
-    font-size: 1rem;
+    font-size: var(--placeholder-font-size);
 }
 
 .submit-btn {
@@ -161,7 +172,7 @@ body {
  }
 
  .nav-bar > ul > li > a:hover {
-    color: rgb(72, 255, 127);
+    color:  #4b96ff;;
  }
 
 /* ---------------------------------------- */
@@ -169,18 +180,19 @@ body {
  /* hourly page */
 .hourly-page-container {
     align-items: center ;
+    position: relative;
 }
 
 .main-display-container {
     width: 100%;
     height: 50%;
-    background-image: url("../assets/tom-barrett-hgGplX3PFBg-unsplash.jpg");
     background-color: rgba(0, 0, 0, 0.208);
     background-size: cover;
     background-blend-mode: color-dodge;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("../assets/weather-bg/clear_sky.jpg");
 }
 
 .weather-display {
@@ -221,15 +233,15 @@ body {
     height: 50%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    column-gap: 6dvh;
-    row-gap: 1rem;
+    column-gap: 0.75rem;
+    row-gap: 0.75rem;
 }
 
 .information-container > * {
     height: 20dvh;
     border-radius: 1rem;  
     box-shadow: var(--box-shadow);
-    background: var(--container-color);
+    background-image: var(--container-color);
     z-index: 0;
 }
 
@@ -283,7 +295,7 @@ body {
     border-radius: 50%;
     box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.052),
     inset -4px -4px 6px -1px rgba(0, 0, 0, 0.078);
-    background-color: rgb(81, 114, 167);
+    background-color: var(--circle-inner-color);
 }
 
 .circular-progress-value {
@@ -302,6 +314,26 @@ body {
     justify-content: center;
 }
 
+.theme-changer {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    height: var(--theme-icon-dimensions);
+    width: var(--theme-icon-dimensions);
+    top: 1rem;
+    right: 1rem;
+    border-radius: 50%;
+}
+
+.theme-changer > img {
+    height: var(--theme-img-dimensions);
+    width: var(--theme-img-dimensions);
+}
+
+.theme-changer:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: rgb(203, 203, 203);
+}
 /* ---------------------------------------- */
 
 /* daily page */
@@ -321,7 +353,7 @@ body {
 .day-1,
 .day-2,
 .day-3{
-    background-color: var(--container-color);
+    background-image: var(--container-color);
     border-radius: 1rem;
     box-shadow: var(--box-shadow);
     height: 16dvh;
@@ -336,13 +368,14 @@ body {
 }
 
 .next-temp {
-    font-size: 5dvh;
+    font-size: var(--next-temp-font-size);
     font-weight: 800;
 }
 
 .next-three-info-container > div > p {
     color: var(--gray-text);
-    font-size: 2dvh;
+    font-size: var(--next-three-condition);
+    text-align: center;
 }
 
 .wind-speed-chart-container,
@@ -354,7 +387,7 @@ body {
 .speed-chart,
 .rain-meters {
     border-radius: 1rem;
-    background-color: var(--container-color);
+    background-image: var(--container-color);
     width: 95%;
     height: 90%;
     box-shadow: var(--box-shadow);
@@ -394,8 +427,8 @@ body {
 }
 
 .progress-bar {
-    height: 80%;
-    width: 4%;
+    height: var(--rain-chance-meter-height);
+    width: var(--rain-chance-meter-width);
     border-radius: 2rem;
     background-color: rgb(73, 73, 73);
     display: flex;
@@ -408,6 +441,7 @@ body {
     width: 100%;
     background-color: var(--progress-bar-color);
 }
+
 
 .day1-chance {
     animation: day1chance 2s linear forwards
@@ -441,6 +475,7 @@ body {
 
 .rain-chance-date {
     color: var(--gray-text);
+    font-size: var(--rain-chance-date);
     font-weight: 600;
     padding-bottom: 1dvh;
 }
@@ -458,7 +493,7 @@ body {
     border-radius: 1rem;
     width: 95%;
     height: 95%;
-    background-color: var(--container-color);
+    background-image: var(--container-color);
     box-shadow: var(--box-shadow);
     text-align: center;
     color: var(--gray-text);
@@ -481,7 +516,7 @@ body {
     border-radius: 1rem;
     width: 95%;
     height: 95%;
-    background-color: var(--container-color);
+    background-image: var(--container-color);
     box-shadow: var(--box-shadow);
 }
 
@@ -505,7 +540,7 @@ body {
     height: var(--aq-meter-outer-dimensions);
     width: var(--aq-meter-outer-dimensions);
     border-radius: 50%;
-    background: conic-gradient(var(--progress-bar-color) 100deg, #ededed 0deg);
+    background: conic-gradient(var(--progress-bar-color) 0deg, rgb(73, 73, 73) 0deg);
     position: relative;
 }
 
@@ -517,7 +552,7 @@ body {
     border-radius: 50%;
     box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.292),
     inset -4px -4px 6px -1px rgba(0, 0, 0, 0.268);
-    background-color: rgb(95, 132, 185);
+    background-color: var(--circle-inner-color);
 }
 
 .air-quality-value {
@@ -560,12 +595,6 @@ body {
     font-size: var(--pollutant-name-size);
 }
 
-.pollutant-condition {
-    font-size: var(--pollutant-condition-size);
-    font-weight: 800;
-    color: var(--gray-text);
-}
-
 h4 {
     font-size: var(--heading-font);
 }
@@ -574,8 +603,74 @@ canvas {
     overflow: hidden;
 }
 
-.next-three-info-container > div > p {
-    text-align: center;
+.dark-mode {
+    --page-color:radial-gradient(circle, #1e1e1e, #212121, #292929, #1e1e1e, #141414);
+    --container-color:radial-gradient(circle, #313131, #313131, #303131, #303030, #303030);
+    --box-shadow: 0px 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.984);
+    --circle-inner-color :rgb(49, 49, 49);
+}
+
+#alert-box{
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 8%;
+    padding: 20px;
+    background-color: rgb(251, 21, 21); 
+    color: white;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2dvh;
+}
+
+@media screen and (max-width: 880px) {
+    :root {
+        --circle-inner-dimensions : 4rem;
+        --circle-outer-dimensions : 4.8rem;
+        --circular-progress-value-size : 1rem;
+        --numeric-meter-text-size : 1.75rem;
+        --nav-font-size : 0.85rem;
+        --date-time-font-size : 0.85rem;
+        --main-temp-size : 3.25rem;
+        --main-condition-size : 1.5rem;
+        --main-location-size : 1.25rem;
+        --input-field-font : 1rem;
+        --input-field-height : 2.25rem;
+        --placeholder-font-size : 1rem;
+        --button-dimensions : 2.25rem;
+        --theme-icon-dimensions : 2rem;
+        --theme-img-dimensions : 1.5rem;
+    }
+
+    .information-container {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1.5rem;
+    }
+
+    .component {
+        height: 100%;
+    }
+
+    .information-container > * {
+        height: 14dvh;
+        border-radius: 1rem;  
+    }
+    
+    .icon-container > img {
+        width: 2rem;
+        height: 2rem;
+        margin-left: 0.25rem;
+    } 
+    
+    .information-container > div > h4 {
+        font-size: 0.75rem;
+        margin-top: 0;
+    }
 }
 
 @media screen and (max-width: 526px) {
@@ -584,6 +679,7 @@ canvas {
         --circle-outer-dimensions : 4.5rem;
         --circular-progress-value-size : 0.75rem;
         --numeric-meter-text-size : 1.25rem;
+        --input-field-font : 1rem;
         --date-time-font-size : 0.6rem;
         --heading-font : 0.75rem;
         --main-temp-size : 3rem;
@@ -593,14 +689,21 @@ canvas {
         --logo-font-size : 0.7rem;
         --nav-font-size : 0.8rem;
         --input-field-height : 2rem;
+        --placeholder-font-size : 0.75rem;
         --button-dimensions : 2rem;
+        --next-temp-font-size : 1.5rem;
         --air-quality-main-size : 1.25rem;
         --aq-condition-size : 1.5rem;
         --aq-description-size : 0.6rem;
         --aq-meter-outer-dimensions : 19dvh;
         --aq-meter-inner-dimensions : 16dvh;
         --pollutant-name-size : 1rem;
-        --pollutant-condition-size : 0.75rem;
+        --rain-chance-meter-width : 0.75rem;
+        --rain-chance-meter-height : 70%;
+        --rain-chance-date : 0.75rem;
+        --next-three-condition : 0.75rem;
+        --theme-icon-dimensions : 1.5rem;
+        --theme-img-dimensions : 1rem;
     }
 
     body {
@@ -629,8 +732,13 @@ canvas {
     }   
 
     .air-pollutants {
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(1, 1fr);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pollutant-container {
+        height: 25%;
+        margin-left: 2rem;
     }
 
     .information-container > * {
@@ -684,7 +792,7 @@ canvas {
   }
 
 
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 400PX) {
     .next-three-info-container {
         width: 95%;
         margin: 0.25rem;
@@ -700,7 +808,7 @@ canvas {
 
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 353px) {
     .next-three-info-container {
         width: 95%;
         margin: 0.25rem;
@@ -714,5 +822,8 @@ canvas {
         width: 6rem;
     }
 
-}
+    .pollutant-container {
+        margin-left: 0.5rem;
+    }
 
+}
