@@ -276,39 +276,39 @@ function bgImgSetter(code) {
     const mainImg = document.querySelector('.main-display-container');
     let image;
     if(code == 1000) {
-        image = "sunny";
+        image = 'sunny.jpg';
     } else if(code >= 1003 && code <= 1009) {
-        image = "cloudy";
+        image = 'cloudy.jpg';
     } else if(code == 1030) {
-         image = "fog";
+         image = 'fog.jpg';
     } else if(code >= 1063 && code <= 1072) {
-        image = "patchy_rain";
+        image = 'patchy_rain.jpg';
     } else if(code == 1087) {
-         image = "thundering";
+         image = 'thundering.jpg';
     } else if(code >= 1114 && code <= 1117) {
-         image = "snow";
+         image = 'snow.jpg';
     }else if (code >= 1135 && code <= 1147) {
-        image = "fog";
+        image = 'fog.jpg';
     } else if(code >= 1150 && code <= 1171) {
-         image = "light_drizzle";
+         image = 'light_drizzle.jpg';
     } else if(code >= 1180 && code <= 1189) {
-        image = "moderate_rain";
+        image = 'moderate_rain.jpg';
     } else if(code >= 1192 && code <= 1204) {
-         image = "heavy_rain";
+         image = 'heavy_rain.jpg';
     } else if(code >= 1207 && code <= 1219) {
-         image = "light_snow";
+         image = 'light_snow.jpg';
     } else if(code >= 1222 && code <= 1237) {
-         image = "heavy_snow";
+         image = 'heavy_snow.jpg';
     } else if(code == 1240) {
-        image = "moderate_rain";
+        image = 'moderate_rain.jpg';
     } else if(code >= 1243 && code <= 1252) {
-        image = "heavy_rain";
+        image = 'heavy_rain.jpg';
     } else if(code >= 1255 && code <= 1264) {
-        image = "heavy_snow";
+        image = 'heavy_snow.jpg';
     } else if(code >= 1273 && code <= 1282) {
-        image = "thundering";
+        image = 'thundering.jpg';
     }
-    mainImg.style.backgroundImage = `url('../assets/${image}.jpg')`;
+    mainImg.style.backgroundImage = `url('../assets/${image}')`;
 }
 
 function getAqiCondition(value) {
@@ -319,6 +319,5 @@ function getAqiCondition(value) {
     }else if(value <= 100) {
         return "Poor"
     }
-
     return "Very Poor";
 }
