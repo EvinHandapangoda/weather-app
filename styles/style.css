@@ -712,8 +712,7 @@ canvas {
     }
 
     body {
-        overflow-y: visible;
-        overflow-x: hidden;
+        overflow: visible;
     }
 
     .nav-bar > ul { 
