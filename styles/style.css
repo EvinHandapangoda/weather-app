@@ -630,6 +630,7 @@ canvas {
 
 .imgs {
     visibility: hidden;
+    display: none;
 }
 
 @media screen and (max-width: 880px) {
@@ -711,7 +712,8 @@ canvas {
     }
 
     body {
-        overflow: visible;
+        overflow-y: visible;
+        overflow-x: hidden;
     }
 
     .nav-bar > ul { 
