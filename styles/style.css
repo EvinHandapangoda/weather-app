@@ -192,7 +192,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../assets/weather-bg/clear_sky.jpg");
+    background-image: url("../assets/bg-images/clear_sky.jpg");
 }
 
 .weather-display {
@@ -626,6 +626,10 @@ canvas {
     margin-left: auto;
     margin-right: auto;
     font-size: 2dvh;
+}
+
+.imgs {
+    visibility: hidden;
 }
 
 @media screen and (max-width: 880px) {

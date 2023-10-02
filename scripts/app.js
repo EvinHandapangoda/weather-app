@@ -308,7 +308,7 @@ function bgImgSetter(code) {
     } else if(code >= 1273 && code <= 1282) {
         image = 'thundering.jpg';
     }
-    mainImg.style.backgroundImage = `url('../assets/${image}')`;
+    mainImg.style.backgroundImage = `url('../assets/bg-images/${image}')`;
 }
 
 function getAqiCondition(value) {
