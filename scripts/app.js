@@ -84,19 +84,19 @@ function updateTextMeters(valueId, unit, startValue, endValue, speed){
 }
 
 //getting-user-location
-function getUserLocation() {
-    navigator.geolocation.getCurrentPosition(successCallBack, errorCallBack);
-}
-const successCallBack = (position) => {
-    const lat = position.coords.latitude;
-    const long = position.coords.longitude;
-    activate(lat+","+long)
-}
+//function getUserLocation() {
+//    navigator.geolocation.getCurrentPosition(successCallBack, errorCallBack);
+//}
+//const successCallBack = (position) => {
+//    const lat = position.coords.latitude;
+//    const long = position.coords.longitude;
+//    activate(lat+","+long)
+//}
 
-const errorCallBack = (error) => {
-    console.log(error);
-}
-getUserLocation();
+//const errorCallBack = (error) => {
+//    console.log(error);
+//}
+//getUserLocation();
 
 //retrieving weather data from weather api
 const submitButton = $('#submit-btn'),
