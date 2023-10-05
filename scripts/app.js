@@ -84,14 +84,14 @@ function updateTextMeters(valueId, unit, startValue, endValue, speed){
 }
 
 //getting-user-location
-//function getUserLocation() {
-//    navigator.geolocation.getCurrentPosition(successCallBack, errorCallBack);
-//}
-//const successCallBack = (position) => {
-//    const lat = position.coords.latitude;
-//    const long = position.coords.longitude;
-//    activate(lat+","+long)
-//}
+function getUserLocation() {
+    navigator.geolocation.getCurrentPosition(successCallBack, errorCallBack);
+}
+const successCallBack = (position) => {
+    const lat = position.coords.latitude;
+    const long = position.coords.longitude;
+    activate(lat+","+long)
+}
 
 //const errorCallBack = (error) => {
 //    console.log(error);
@@ -206,7 +206,8 @@ async function pastWeatherPage(q) {
 
     for (let i = 1; i < 8; i++) {
         let before7Daysdate=new Date(currentDate.setDate(currentDate.getDate() - 1));
-        let dt = before7Daysdate.getFullYear()+"-"+before7Daysdate.getMonth()+"-"+before7Daysdate.getDate();
+        let dt = before7Daysdate.getFullYear()+"-"+(before7Daysdate.getMonth()+1)+"-"+before7Daysdate.getDate();
+        
         let response = await getFromApi(q, "history.json", `&dt=${dt}`);
         dates.push(dt);
         let day = response.forecast.forecastday[0].day;
