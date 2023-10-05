@@ -88,15 +88,13 @@ function getUserLocation() {
     navigator.geolocation.getCurrentPosition(successCallBack, errorCallBack);
 }
 const successCallBack = (position) => {
-    const lat = position.coords.latitude;
-    const long = position.coords.longitude;
-    activate(lat+","+long)
+    activate(position.coords.latitude+","+position.coords.longitude)
 }
 
-//const errorCallBack = (error) => {
-//    console.log(error);
-//}
-//getUserLocation();
+const errorCallBack = (error) => {
+   console.log(error);
+}
+getUserLocation();
 
 //retrieving weather data from weather api
 const submitButton = $('#submit-btn'),
